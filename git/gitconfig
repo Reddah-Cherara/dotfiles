@@ -1,0 +1,81 @@
+[user]
+  name = Cherara Reddah
+  email = cherara.reddah@icloud.com
+
+[core]
+  excludesfile = ~/.gitignore
+  pager = diff-so-fancy | less --tabs=4 -R
+
+[status]
+  showUntrackedFiles = all
+
+[color]
+  ui = true
+
+[color "branch"]
+  current = blue
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  old = 243
+  new = 45
+
+[color "status"]
+  added = 45
+  changed = 78
+  untracked = 243
+
+[diff]
+  tool = icdiff
+
+[difftool]
+  prompt = false
+
+[difftool "icdiff"]
+  cmd = icdiff --line-numbers $LOCAL $REMOTE
+
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+
+[alias]
+  a    = add
+  b    = branch
+  bm   = branch --move
+  branch-delete-with-pattern = "!f() { git branch -D $(git branch | grep $1); }; f"
+  cl   = clone
+  c    = commit --verbose
+  cm   = commit -m
+  ca   = commit -am
+  cam  = commit --amend
+  cv   = commit --verbose
+  co   = checkout
+  cob  = checkout -b
+  com  = checkout master
+  cp   = cherry-pick
+  d    = diff
+  db   = diff HEAD~1..HEAD
+  dbf  = diff HEAD~1..HEAD --name-status
+  dc   = diff --cached
+  dm   = diff master..HEAD
+  l    = log --oneline --decorate --color --graph
+  lg   = log --stat --max-count=10
+  lgg  = log --graph --max-count=10
+  lgga = log --graph --decorate --all
+  lo   = log --oneline --decorate --color
+  ls-untracked = !git ls-files --others --exclude-standard
+  p    = push
+  po   = push origin
+  pom  = push origin master
+  pl   = pull
+  rb   = rebase
+  rbm  = rebase master
+  s    = status
+  ss   = status -s
+  st   = stash
+  standup = !git log --author="$(git config --global user.email)" --oneline --since="yesterday" --all
+  stash-all = stash save --include-untracked
+  undo = reset --soft HEAD^
